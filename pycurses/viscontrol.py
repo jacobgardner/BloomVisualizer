@@ -51,7 +51,8 @@ class Viscontrol( Window ):
         self.score = Scoreboard( x+Visettings.MaxX*2+5, y, 31, Visettings.MaxY*2+4 )
         self.gameboard = Gameboard( x, y, Visettings.MaxX*2+4, Visettings.MaxY*2+4 )
         self.plantInfo = Plantinfo( x+Visettings.MaxX*2+5+31, y, 32, Visettings.MaxY+1 )
-        self.minimap = Minimap( x+Visettings.MaxX*2+5+31+30/2 - Visettings.MaxX/2, \
+        self.minimap = Minimap( \
+        x+Visettings.MaxX*2+5+31+30/2 - Visettings.MaxX/2, \
         Visettings.MaxY+1, \
         Visettings.MaxX+3, \
         Visettings.MaxY+3 )

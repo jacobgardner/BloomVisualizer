@@ -23,7 +23,6 @@ class Minimap(Window):
         if Visettings.AutoEnd:
             pass
             
-        
         for i in Visettings.State.plants:
             self.Window.attron( curses.color_pair( Legend.PLAYER_1_PIECE_COLOR+i.ownerID ) )
                 

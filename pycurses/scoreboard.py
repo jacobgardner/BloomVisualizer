@@ -23,13 +23,11 @@ class Scoreboard( Window ):
     def update( self ):
         Window.update( self )
         
-        # TODO: Need to add ATTRSET LINE
-        
         line = 1
         
         red = 0
         blue = 0
-
+        
         highestLevel = [0,0]
         for i in Visettings.State.plants:
             if i.ownerID: 
@@ -39,7 +37,7 @@ class Scoreboard( Window ):
                 
             if i.rootLevel + i.leafLevel + i.flowerLevel > highestLevel[i.ownerID]:
                 highestLevel[i.ownerID] = i.rootLevel + i.leafLevel + i.flowerLevel 
-
+                
         self.Window.addstr( line, 2, "Turn: %d     " % (Visettings.FrameNumber) )
         line+=1
         
@@ -52,7 +50,7 @@ class Scoreboard( Window ):
         line = self.printLine( line, "Score: %d     " % (Visettings.Player1Score) )
         line = self.printLine( line, "Light: %d     " % (Visettings.Player1Light) )
         line = self.printLine( line, "Plants: %d     " % (red) )
-
+        
         self.Window.attrset( curses.color_pair( Legend.PLAYER_2_COLOR  ) )
         line+=2
         self.Window.addstr( line, 2, "----------------------------" )
@@ -64,14 +62,14 @@ class Scoreboard( Window ):
         line = self.printLine( line, "Light: %d     " % (Visettings.Player2Light) )
         line = self.printLine( line, "Plants: %d     " % (blue) )
         line = self.printLine( line, "Plant Level: %d     " % (highestLevel[1]) )
-
+        
         self.Window.attrset( curses.color_pair( Legend.INSTRUCTIONS ) )
         
         line = Visettings.MaxY*2-12
-
+        
         Visettings.Player1Plants = red
         Visettings.Player2Plants = blue
-
+        
         instructions = [
         "Visualizer Usage: ",
         "Q     | Quit",

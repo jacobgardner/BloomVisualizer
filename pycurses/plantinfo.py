@@ -38,8 +38,8 @@ class Plantinfo(Window):
                 "Leaf LvlUp: %d" % (Visettings.Plant.leafLevelUp ),
                 "Flower LvlUp: %d" % (Visettings.Plant.flowerLevelUp )
                 ]
-
-
+                
+                
                 for k in info:
                     i = self.printInfo( i, k )
                 # Print Stuff
@@ -54,37 +54,39 @@ class Plantinfo(Window):
                         w = 0
                         msg = pm.getTalk( j )
                         nLine = 0
-
+                        
                         for k in range( 0, 28 ):
                             if msg[k] == '\n':
                                 nLine = 1
-
+                        
                         l = 0
-
+                        
                         while len( msg )-w > 28 or nLine:
                             l = w+28
                             nLine = 0
-
+                            
                             for k in range( w, l ):
                                 if msg[k] == '\n':
                                     l = k
-                                    break                          
+                                    break    
+                            
                             self.Window.addstr( i, 2, msg[w:l] )
                             w = l+1
                             i+=1
-
+                            
                             for k in range( w, w+28 ):
                                 if k < len(msg) and msg[k] == '\n':
                                     nLine = 1
                                     break
-        
+                                
                         self.Window.addstr( i, 2, msg[w:] )
                         i+=1
+                        
         else:
             if not Visettings.AutoEnd:
                 self.Window.addstr( 1, 2, "Empty" )
             else:
                 pass
-        
+                
         self.Window.box( 0, 0 )
         self.Window.refresh()
