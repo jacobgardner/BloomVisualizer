@@ -27,9 +27,12 @@ visualizer: $(objects) ../visualizer/parser.o ../visualizer/structures.o
 	$(CXX) $(CXXFLAGS) $(LOADLIBES) -fPIC -c *.cpp
 	$(CXX) $(CXXFLAGS) $(LOADLIBES) $(LDLIBS) -shared -Wl,-soname,libparsermodule.so.1  ../visualizer/sexp/libclient*.o -o libparsermodule.so $^
 
-
-../visualizer/sexp/sexp.a ../visualzer/sexp/libclient_sexp.a ../visualizer/parser.o ../visualizer/structures.o:
+../visualizer/sexp/sexp.a ../visualzer/sexp/libclient_sexp.a :
 	$(MAKE) -C ../visualizer/sexp
+
+../visualizer/parser.o ../visualizer/structures.o:
+	$(MAKE) -C ../visualizer
+
 #$(dir $@) $(notdir $@)
 
 -include $(deps)
