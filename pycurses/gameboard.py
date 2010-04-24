@@ -68,7 +68,6 @@ class Gameboard( Window ):
  
         if Visettings.AutoEnd:
             pass
-            
         
         for i in Visettings.State.plants:
             if i.x == Visettings.CurX and i.y == Visettings.CurY \

@@ -21,8 +21,6 @@ def main(argv):
         return 0
         
     
-    print len( game.states )
-    
     # Initialize Ncurses
     Visettings.Screen = curses.initscr()
     curses.cbreak()
@@ -37,11 +35,14 @@ def main(argv):
     
     # Start VISCONTROL
     vc = Viscontrol( 0, 0, game )
-    
-    # Run the loop
-    while 1:
-        if not vc.run() :
-            break
+
+    try:
+        # Run the loop
+        while 1:
+            if not vc.run() :
+                break
+    except:
+        pass # Clean up
     
     # Clean up Ncurses
     curses.endwin()
